@@ -1,0 +1,33 @@
+<div class="row">
+    <ng-container *ngFor="let section of mappedData">
+        <ng-container [ngSwitch]="section.type">
+
+
+            <!-- Section -->
+            <div *ngSwitchCase="'section'" [ngClass]="getColumnClass(section.column)">
+                <div class="cards">
+                    <div class="align-items-center card-title">
+                        <p class="section-header tuncate-text">
+                            <i *ngIf="section.icon" class="fas {{section.icon}} mr10"></i>{{section.name}}
+                        </p>
+                    </div>
+
+                    <!-- Recursively render nested sections -->
+                    <app-preview-layout [mappedData]="section.fields"></app-preview-layout>
+                </div>
+            </div>
+
+            <ng-container *ngSwitchDefault>
+                <div [ngClass]="getColumnClass(section.column)">
+                    <div class="preview-data">
+                        <p *ngIf="!section.icon" class="font-body-medium color-font-preview">{{section.label}}
+                        </p>
+                        <p class="font-title-xs fw-normal color-font-preview">
+                            <i *ngIf="section.icon" class="fas {{section.icon}} mr10"></i>{{section.value}}
+                        </p>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</div>

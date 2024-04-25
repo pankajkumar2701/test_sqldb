@@ -1,0 +1,10 @@
+.main-sub-nvabar {
+    display: flex;
+    background: rgba(1, 114, 192, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:empty {
+        display: none;
+    }
+}
